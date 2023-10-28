@@ -55,8 +55,8 @@ function highlightFeature(e) {
   var layer = e.target;
 
   layer.setStyle({
-    weight: 5,
-    color: '#666',
+    weight: 2,
+    color: 'white',
     dashArray: '',
     fillOpacity: 0.7
   });
@@ -76,7 +76,7 @@ function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
 
-function changeStyle(e) {
+function handleClick(e) {
   var layer = e.target;
   layer.setStyle({
     weight: 2,
@@ -87,13 +87,14 @@ function changeStyle(e) {
   })
    layer.bringToFront;
    info.update(layer.feature.properties);
+   onclick;
 }
 
 function onEachFeature(feature, layer) {
   layer.on({
-    //mouseover: highlightFeature,
+    mouseover: highlightFeature,
     //mouseout: resetHighlight,
-    click: changeStyle
+    click: handleClick
   });
 }
 
@@ -135,6 +136,4 @@ function onMapClick(e) {
     L.marker(e.latlng).addTo(Map);
 }
 
-map.on('click', onMapClick);
-
-//Push
+//map.on('click', onMapClick);
