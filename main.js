@@ -136,4 +136,4 @@ function onMapClick(e) {
     L.marker(e.latlng).addTo(Map);
 }
 
-//map.on('click', onMapClick);
+map.on('click', onMapClick);
