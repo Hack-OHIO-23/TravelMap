@@ -27,16 +27,16 @@ info.update = function (props) {
 info.addTo(map);
 
 // get color depending on population density value
-  function getColor(d) {
-      return d >= 8 ? '#800026' :
-          d >= 7  ? '#bd0026' :
-          d >= 6  ? '#e31a1c' :
-          d >= 5  ? '#fc4e2a' :
-          d >= 4  ? '#fd8d3c' :
-          d >= 3   ? '#feb24c' :
-          d >= 2   ? '#fed976' :
-          d >= 1   ? '#ffeda0' : '#ffffcc';
-  }
+function getColor(d) {
+    return d >= 8 ? '#800026' :
+        d >= 7  ? '#bd0026' :
+        d >= 6  ? '#e31a1c' :
+        d >= 5  ? '#fc4e2a' :
+        d >= 4  ? '#fd8d3c' :
+        d >= 3   ? '#feb24c' :
+        d >= 2   ? '#fed976' :
+        d >= 1   ? '#ffeda0' : '#ffffcc';
+}
 
 function style(feature) {
       return {
