@@ -1,9 +1,7 @@
 import {carbonCal} from './carbon.js';
 
 // initialize Leaflet
-const map = L.map('map', {
-  worldCopyJump: true
-}).setView([37.8, -96], 4);
+const map = L.map('map').setView([37.8, -96], 4);
 
 // add the OpenStreetMap tiles
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -137,7 +135,7 @@ let lineList = [];
 function onMapClick(e) {
   popup
     .setLatLng(e.latlng)
-    .setContent("toggle")
+    .setContent("Add new Marker")
     .openOn(map);
     let marker = L.marker(e.latlng).addTo(map);
     markerList.push(marker);
