@@ -115,7 +115,7 @@ legend.onAdd = function (map) {
     labels = [];
 
   // loop through our density intervals and generate a label with a colored square for each interval
-  for (var i = 0; i < grades.length; i++) {
+  for (let i = 0; i < grades.length; i++) {
     div.innerHTML +=
       '<i style="background:' + getColor(grades[i]) + '"></i> ' +
       grades[i] + (grades[i + 1] ? '<br>' : '+');
@@ -126,14 +126,14 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-var popup = L.popup();
+let popup = L.popup();
 
 function onMapClick(e) {
   popup
     .setLatLng(e.latlng)
     .setContent("toggle")
     .openOn(map);
-    L.marker(e.latlng).addTo(Map);
+    L.marker(e.latlng).addTo(map);
 }
 
-//map.on('click', onMapClick);
+map.on('click', onMapClick);
