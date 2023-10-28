@@ -127,13 +127,30 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 let popup = L.popup();
+var markerList = [];
 
 function onMapClick(e) {
   popup
     .setLatLng(e.latlng)
     .setContent("toggle")
     .openOn(map);
-    L.marker(e.latlng).addTo(map);
+    var marker = L.marker(e.latlng).addTo(map);
+    markerList.push(marker);
 }
 
 map.on('click', onMapClick);
+
+function removeAllMarker() {
+  for (var i = 0; i < markerList.length; i++) {
+    map.removeLayer(markerList[i]);
+  }
+  // Clear the 'markerList' array
+  markerList = [];
+}
+
+document.addEventListener("keydown", function(event) {
+  // Check if the pressed key is "R" (either uppercase or lowercase)
+  if (event.key === "R") {
+    removeAllMarker();
+  }
+});
