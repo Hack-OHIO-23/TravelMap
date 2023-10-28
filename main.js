@@ -193,8 +193,6 @@ function toggleTransportation() {
   }
 }
 
-
-
 document.addEventListener("keydown", function(event) {
   // Check if the pressed key is "R" (either uppercase or lowercase)
   if (event.key === "R") {
