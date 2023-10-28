@@ -159,6 +159,7 @@ function removeAllMarker() {
     map.removeLayer(markerList[i]);
   }
   markerList = [];
+  lastMarker = null;
 }
 
 function removeAllLines() {
