@@ -5,6 +5,7 @@
 /* www.movable-type.co.uk/scripts/geodesy-library.html#latlon-spherical                           */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
+/* Calcualte the distance between two points using two latitude and longitude points */
 export function haversine(let1, lon1, lat2, lon2) {
     const R = 6371e3; // metres
     const φ1 = lat1 * Math.PI/180; // φ, λ in radians
@@ -17,7 +18,7 @@ export function haversine(let1, lon1, lat2, lon2) {
             Math.sin(Δλ/2) * Math.sin(Δλ/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-    const d = R * c; // in metres
+    const d = R * c; // in meters
 
-    console.log(d);
+    return d;
 }
