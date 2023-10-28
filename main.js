@@ -30,7 +30,7 @@ info.addTo(map);
   function getColor(d) {
       return d >= 8 ? '#800026' :
           d >= 7  ? '#bd0026' :
-    d >= 6  ? '#e31a1c' :
+          d >= 6  ? '#e31a1c' :
           d >= 5  ? '#fc4e2a' :
           d >= 4  ? '#fd8d3c' :
           d >= 3   ? '#feb24c' :
@@ -76,11 +76,24 @@ function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
 
+function changeStyle(e) {
+  var layer = e.target;
+  layer.setStyle({
+    weight: 2,
+    color: 'white',
+    ddashArray: '',
+    fillOpacity: 0.7,
+    fillColor: getColor(layer.feature.properties.density+=0.5)
+  })
+   layer.bringToFront;
+   info.update(layer.feature.properties);
+}
+
 function onEachFeature(feature, layer) {
   layer.on({
-    mouseover: highlightFeature,
-    mouseout: resetHighlight,
-    //click: zoomToFeature
+    //mouseover: highlightFeature,
+    //mouseout: resetHighlight,
+    click: changeStyle
   });
 }
 
@@ -119,7 +132,7 @@ function onMapClick(e) {
     .setLatLng(e.latlng)
     .setContent("toggle")
     .openOn(map);
-    L.mmarker(e.latlng).addTo(Map);
+    L.marker(e.latlng).addTo(Map);
 }
 
 map.on('click', onMapClick);
