@@ -184,13 +184,7 @@ function toggleTransportation() {
   }
 }
 
-function createNextMarkerList() {
 
-}
-
-function createNextMarkerList() {
-  
-}
 
 document.addEventListener("keydown", function(event) {
   // Check if the pressed key is "R" (either uppercase or lowercase)
