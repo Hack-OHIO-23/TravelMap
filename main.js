@@ -83,7 +83,7 @@ function changeStyle(e) {
     color: 'white',
     ddashArray: '',
     fillOpacity: 0.7,
-    fillColor: getColor(layer.feature.properties.density+=0.5)
+    fillColor: getColor(layer.feature.properties.density+=1)
   })
    layer.bringToFront;
    info.update(layer.feature.properties);
