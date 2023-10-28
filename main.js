@@ -130,6 +130,7 @@ let popup = L.popup();
 let markerList = [];
 let lastMarker = null;
 let lineList = [];
+let transportation = "Airplane";
 
 function onMapClick(e) {
   popup
@@ -143,7 +144,13 @@ function onMapClick(e) {
     if (lastMarker) {
       // Create a polyline connecting the lastMarker and the new marker
       let latlngs = [lastMarker.getLatLng(), marker.getLatLng()];
-      let polyLine = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+      let polyLine;
+      if (transportation == "Airplane") {
+        polyLine = L.polyline(latlngs, { color: 'red' }).addTo(map);
+      }
+      if (transportation == "Car") {
+        polyLine = L.polyline(latlngs, { color: 'blue'}).addTo(map);
+      }
       lineList.push(polyLine);
     }
     
@@ -168,13 +175,16 @@ function removeAllLines() {
   lineList = [];
 }
 
-function createNextMarkerList() {
-
+function toggleTransportation() {
+  if (transportation == "Airplane"){
+    transportation = "Car";
+  }
+  else {
+    transportation = "Airplane";
+  }
 }
 
-function createNextMarkerList() {
-  
-}
+
 
 document.addEventListener("keydown", function(event) {
   // Check if the pressed key is "R" (either uppercase or lowercase)
@@ -188,6 +198,6 @@ document.addEventListener("keydown", function(event) {
     // undoMarkerList();
     // undoLineList();
   } else if (event.key === "T") {
-    // changeTransportMode();
+    toggleTransportation();
   }
 });
