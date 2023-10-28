@@ -1,7 +1,9 @@
 import {carbonCal} from './carbon.js';
 
 // initialize Leaflet
-const map = L.map('map').setView([37.8, -96], 4);
+const map = L.map('map', {
+  worldCopyJump: true
+}).setView([37.8, -96], 4);
 
 // add the OpenStreetMap tiles
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -140,6 +142,7 @@ function onMapClick(e) {
 
 map.on('click', onMapClick);
 
+/* Remove mark function */
 function removeAllMarker() {
   for (var i = 0; i < markerList.length; i++) {
     map.removeLayer(markerList[i]);
