@@ -159,6 +159,15 @@ function onMapClick(e) {
 
 map.on('click', onMapClick);
 
+function removeLastMarker() {
+  if(markerList.length > 1){
+    let recentMarker = markerList.pop();
+    let lastLine = lineList.pop();
+    map.removeLayer(recentMarker);
+    map.removeLayer(lastLine);
+  }
+}
+
 /* Remove mark function */
 function removeAllMarker() {
   for (let i = 0; i < markerList.length; i++) {
@@ -195,8 +204,9 @@ document.addEventListener("keydown", function(event) {
     // createNextMarkerList();
     // createNextLineList();
   } else if (event.key === "Z") {
-    // undoMarkerList();
-    // undoLineList();
+    removeLastMarker();
+    removeLastMarker();
+    lastMarker = markerList[markerList.length - 2];
   } else if (event.key === "T") {
     toggleTransportation();
   }
