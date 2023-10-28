@@ -129,31 +129,51 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 let popup = L.popup();
-var markerList = [];
+
+let markerList = [];
+let lastMarker = null;
+let lineList = [];
 
 function onMapClick(e) {
   popup
     .setLatLng(e.latlng)
     .setContent("toggle")
     .openOn(map);
-    var marker = L.marker(e.latlng).addTo(map);
+    let marker = L.marker(e.latlng).addTo(map);
     markerList.push(marker);
+
+    // Draw the line
+    if (lastMarker) {
+      // Create a polyline connecting the lastMarker and the new marker
+      let latlngs = [lastMarker.getLatLng(), marker.getLatLng()];
+      let polyLine = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+      lineList.push(polyLine);
+    }
+    
+    lastMarker = marker;
 }
 
 map.on('click', onMapClick);
 
 /* Remove mark function */
 function removeAllMarker() {
-  for (var i = 0; i < markerList.length; i++) {
+  for (let i = 0; i < markerList.length; i++) {
     map.removeLayer(markerList[i]);
   }
-  // Clear the 'markerList' array
   markerList = [];
+}
+
+function removeAllLines() {
+  for (let i = 0; i < lineList.length; i++) {
+    map.removeLayer(lineList[i]);
+  }
+  lineList = [];
 }
 
 document.addEventListener("keydown", function(event) {
   // Check if the pressed key is "R" (either uppercase or lowercase)
   if (event.key === "R") {
     removeAllMarker();
+    removeAllLines();
   }
 });
