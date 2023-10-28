@@ -204,9 +204,6 @@ document.addEventListener("keydown", function(event) {
     // undoMarkerList();
     // undoLineList();
   } else if (event.key === "T") {
-    // changeTransportMode();
-  }
-  if (event.key === "T") {
     toggleTransportation();
   }
 });
