@@ -119,6 +119,7 @@ function onMapClick(e) {
     .setLatLng(e.latlng)
     .setContent("toggle")
     .openOn(map);
+    L.mmarker(e.latlng).addTo(Map);
 }
 
 map.on('click', onMapClick);
