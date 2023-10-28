@@ -9,7 +9,7 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
 }).addTo(map);
 
-var info = L.control();
+let info = L.control();
 
 info.onAdd = function (map) {
   this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -49,10 +49,10 @@ function style(feature) {
       };
   }      
 
-var geojson;
+let geojson;
 
 function highlightFeature(e) {
-  var layer = e.target;
+  let layer = e.target;
 
   layer.setStyle({
     weight: 2,
@@ -77,7 +77,7 @@ function zoomToFeature(e) {
 }
 
 function handleClick(e) {
-  var layer = e.target;
+  let layer = e.target;
   layer.setStyle({
     weight: 2,
     color: 'white',
@@ -106,11 +106,11 @@ geojson = L.geoJson(statesData, {
 // show the scale bar on the lower left corner
 L.control.scale({imperial: true, metric: true}).addTo(map);
 
-var legend = L.control({position: 'bottomright'});
+let legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
 
-  var div = L.DomUtil.create('div', 'info legend'),
+  let div = L.DomUtil.create('div', 'info legend'),
     grades = [0, 1, 2, 3, 4, 5, 6, 7, 8],
     labels = [];
 
