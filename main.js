@@ -87,13 +87,12 @@ function handleClick(e) {
   })
    layer.bringToFront;
    info.update(layer.feature.properties);
-   onclick;
 }
 
 function onEachFeature(feature, layer) {
   layer.on({
     mouseover: highlightFeature,
-    //mouseout: resetHighlight,
+    mouseout: resetHighlight,
     click: handleClick
   });
 }
