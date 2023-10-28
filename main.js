@@ -179,8 +179,8 @@ function toggleTransportation() {
   if (transportation == "Airplane"){
     transportation = "Car";
   }
-  if (transportation == "Car"){
-    transportation = "Car";
+  else {
+    transportation = "Airplane";
   }
 }
 
