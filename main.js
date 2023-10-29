@@ -17,11 +17,18 @@ info.onAdd = function (map) {
   return this._div;
 };
 
+let distance = 0;
+let CO2 = 0.0;
+
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
   this._div.innerHTML = '<h4>US Travel Info</h4>' +  (props ?
   '<b>' + props.name + '</b><br />' + (props.density > 0 ? props.density + ' Trip(s) to this state' : 'No trips')
-  : 'Hover over a state');
+  : 'Hover over a state') + 
+  '<br/>'+
+  '<p>Distance: ' + (distance / 1000).toFixed(2) + ' KM</p>'+
+  '<br/>'+
+  '<p>CO2: ' + (CO2).toFixed(2) + ' kg/passenger-km</p>'
 };
 
 info.addTo(map);
@@ -152,9 +159,17 @@ function onMapClick(e) {
         polyLine = L.polyline(latlngs, { color: 'blue'}).addTo(map);
       }
       lineList.push(polyLine);
+
+      let newDist = lastMarker.getLatLng().distanceTo(marker.getLatLng());
+      distance += newDist;
+      CO2 += carbonCal(transportation, newDist);
+
     }
     
     lastMarker = marker;
+    
+    
+    info.update();
 }
 
 map.on('click', onMapClick);
