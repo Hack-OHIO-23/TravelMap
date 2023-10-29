@@ -214,8 +214,7 @@ document.addEventListener("keydown", function(event) {
     removeAllLines();
   } else if (event.key === "Z") {
     removeLastMarker();
-    removeLastMarker();
-    lastMarker = markerList[markerList.length - 2];
+    lastMarker = markerList[markerList.length - 1];
   } else if (event.key === "T") {
     toggleTransportation();
   }
