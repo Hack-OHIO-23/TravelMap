@@ -28,7 +28,12 @@ info.update = function (props) {
   '<br/>'+
   '<p>Distance: ' + (distance / 1000).toFixed(2) + ' KM</p>'+
   '<br/>'+
-  '<p>CO2: ' + (CO2).toFixed(2) + ' kg/passenger-km</p>'
+  '<p>CO2: ' + (CO2).toFixed(2) + ' kg/passenger-km</p>'+
+  '<p>Keyboard shortcuts:</p>'+
+  '<P>Shift+R: Remove all markers & lines</p>'+
+  '<P>Shift+Z: Undo</p>'+
+  '<p>Shift+T: Change transportation method</p>'+
+  '<p>Blue: Car Red: Airplane</p>'
 };
 
 info.addTo(map);
