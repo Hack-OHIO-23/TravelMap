@@ -145,10 +145,6 @@ let lineList = [];
 let transportation = "Airplane";
 
 function onMapClick(e) {
-  popup
-    .setLatLng(e.latlng)
-    .setContent("Add new Marker")
-    .openOn(map);
     let marker = L.marker(e.latlng).addTo(map);
     markerList.push(marker);
 
