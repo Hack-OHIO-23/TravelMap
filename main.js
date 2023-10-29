@@ -176,11 +176,21 @@ map.on('click', onMapClick);
 
 function removeLastMarker() {
   if(markerList.length > 1){
+    let newDist = markerList[markerList.length-1].getLatLng().distanceTo(markerList[markerList.length-2].getLatLng());
+    distance -= newDist;
+    CO2 -= carbonCal(transportation, newDist);
     let recentMarker = markerList.pop();
     let lastLine = lineList.pop();
     map.removeLayer(recentMarker);
     map.removeLayer(lastLine);
+
+  } else {
+    map.removeLayer(markerList.pop());
+    lastMarker = null;
+    C02 = 0;
+    distance = 0;
   }
+  info.update();
 }
 
 /* Remove mark function */
