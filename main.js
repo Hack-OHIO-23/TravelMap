@@ -179,9 +179,9 @@ function removeLastMarker() {
   if(markerList.length > 1){
     let newDist = markerList[markerList.length-1].getLatLng().distanceTo(markerList[markerList.length-2].getLatLng());
     distance -= newDist;
-    CO2 -= carbonCal(transportation, newDist);
     let recentMarker = markerList.pop();
     let lastLine = lineList.pop();
+    CO2 -= carbonCal(transportation, newDist);
     map.removeLayer(recentMarker);
     map.removeLayer(lastLine);
 
@@ -190,6 +190,9 @@ function removeLastMarker() {
     lastMarker = null;
     C02 = 0;
     distance = 0;
+  }
+  if (distance == 0) {
+    C02 = 0;
   }
   info.update();
 }
@@ -226,7 +229,7 @@ document.addEventListener("keydown", function(event) {
   } else if (event.key === "Z") {
     removeLastMarker();
     lastMarker = markerList[markerList.length - 1];
-  } else if (event.key === "T") {
+  } else if (event.key === "T" && markerList.length == 0) {
     toggleTransportation();
   }
 });
